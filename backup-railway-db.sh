@@ -1,0 +1,28 @@
+#!/bin/bash
+# Script to backup Railway PostgreSQL database
+
+echo "=== Railway Database Backup Script ==="
+echo ""
+echo "Please follow these steps to backup your Railway database:"
+echo ""
+echo "1. Login to Railway:"
+echo "   railway login"
+echo ""
+echo "2. Connect to your database service and create a backup:"
+echo "   railway ssh --project=4c060edd-949a-4d83-95ca-892b64b1356d --environment=8b189df9-aa8f-4f05-a5a4-85e443d66d36 --service=7955626a-881b-4138-9a56-97c544f07ee7"
+echo ""
+echo "3. Once connected, run this command to create the backup:"
+echo "   pg_dump -U \$PGUSER -h \$PGHOST -p \$PGPORT -d \$PGDATABASE --clean --no-owner --no-privileges > /tmp/metabase_backup.sql"
+echo ""
+echo "4. Exit the SSH connection:"
+echo "   exit"
+echo ""
+echo "5. Copy the backup file to your local machine:"
+echo "   scp railway:tmp/metabase_backup.sql ./metabase_backup.sql"
+echo ""
+echo "   OR use this alternative method:"
+echo "   railway ssh --project=4c060edd-949a-4d83-95ca-892b64b1356d --environment=8b189df9-aa8f-4f05-a5a4-85e443d66d36 --service=7955626a-881b-4138-9a56-97c544f07ee7 -- cat /tmp/metabase_backup.sql > /Users/administrator/Documents/GitHub/metabase/metabase_backup.sql"
+echo ""
+echo "Once you have the backup file, let me know and I'll help you import it!"
+echo ""
+
